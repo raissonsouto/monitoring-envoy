@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: grafana-config
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Graphite
+        type: graphite
+        access: proxy
+        url: http://graphite.default.svc.cluster.local:80
+        editable: true

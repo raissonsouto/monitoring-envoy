@@ -12,7 +12,7 @@ data:
           "@type": type.googleapis.com/envoy.extensions.stat_sinks.graphite_statsd.v3.GraphiteStatsdSink
           address:
             socket_address:
-              address: 10.106.1.183  # Adicione aqui o endereço correto
+              address: 10.106.1.183  # change to correct graphite address, using kubectl get svc -o wide
               port_value: 8125
           prefix: stasd
     static_resources:
@@ -34,7 +34,7 @@ data:
           type: STRICT_DNS
           lb_policy: ROUND_ROBIN
           load_assignment:
-            cluster_name: kafka_cluster
+            cluster_name: nginx
             endpoints:
               - lb_endpoints:
                   - endpoint:
