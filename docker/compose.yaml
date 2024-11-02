@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+  
+  graphite:
+    image: graphiteapp/graphite-statsd:latest
+    ports:
+      - "80:80"
+      - "2003-2004:2003-2004"
+      - "2023-2024:2023-2024"
+      - "8125:8125/udp"
+      - "8126:8126"
+    networks:
+      default:
+        aliases:
+          - graphite
+  
+  envoy:
+    image: envoyproxy/envoy:v1.19-latest
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "10000:10000"
+    depends_on:
+      - nginx
+      - graphite
+  
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+    depends_on:
+      - graphite
+
+networks:
+  default:
+    driver: bridge
