@@ -11,7 +11,7 @@ This repository provides instructions and configurations for monitoring Envoy us
 
 ## Architecture
 
-<img src="https://github.com/raissonsouto/monitoring-envoy/diagram.png" alt="diagram" width="400"/>
+<img src="https://github.com/raissonsouto/monitoring-envoy/raw/refs/heads/main/diagram.png" alt="diagram" width="700"/>
 
 ## Setup demo in Docker
 
