@@ -1,15 +1,8 @@
-node:
-  cluster: stasd
-
-stats_sinks:
-  - name: "envoy.statsd"
-    typed_config:
-      "@type": type.googleapis.com/envoy.extensions.stat_sinks.graphite_statsd.v3.GraphiteStatsdSink
-      address:
-        socket_address:
-          address: 127.0.0.1
-          port_value: 8126
-      prefix: stasd
+admin:
+  address:
+    socket_address: 
+      address: 0.0.0.0
+      port_value: 9901
 
 static_resources:
   listeners:
